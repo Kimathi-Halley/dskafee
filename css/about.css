@@ -1,0 +1,321 @@
+/* about - hero */
+.about-hero {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  padding: 8em 2em 6em 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--fg);
+  color: var(--bg);
+  overflow: hidden;
+}
+
+/* Make logo sun icon white on black background */
+.about-page nav .logo .logo-sun-icon {
+  color: var(--bg);
+}
+
+.about-hero .about-hero-header {
+  text-align: center;
+}
+
+.about-hero .about-hero-header h1 {
+  font-size: 7.5rem;
+}
+
+.about-hero .about-hero-bio {
+  text-align: center;
+  width: 50%;
+}
+
+.about-hero .about-hero-portrait {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(10deg);
+  width: 15%;
+  aspect-ratio: 5/7;
+  border-radius: 1em;
+  overflow: hidden;
+  border: 0.25em solid var(--accent3);
+  outline: 0.25em solid var(--accent1);
+}
+
+.about-hero .about-hero-portrait img {
+  object-fit: contain;
+  padding: 0.5em;
+  background-color: var(--bg);
+}
+
+.about-hero .about-hero-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+/* about - about copy */
+.about-copy {
+  position: relative;
+  width: 100vw;
+  height: 100%;
+  padding: 8em 2em 8em 2em;
+}
+
+.about-copy .about-copy-content {
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--accent1);
+  border: 0.25em solid var(--fg);
+  border-radius: 1em;
+  padding: 3em 2em;
+  gap: 2em;
+}
+
+.about-copy .about-copy-content h3 {
+  font-weight: 400;
+}
+
+.about-copy .about-copy-content h3 span {
+  font-weight: 900;
+}
+
+.about-copy .tag {
+  position: absolute;
+  width: max-content;
+  background-color: var(--fg);
+  border-radius: 0.5em;
+}
+
+.about-copy .tag p {
+  font-family: "nurture-your-best";
+  text-transform: none;
+  color: var(--bg);
+  font-size: 1.4rem;
+  padding: 0.5em 0.7em 0.3em 0.7em;
+  line-height: 1;
+}
+
+.about-copy #tag-1 {
+  top: 12%;
+  left: 15%;
+  transform: translate(-50%, -50%) rotate(14deg);
+  background-color: var(--accent1);
+}
+
+.about-copy #tag-2 {
+  top: 55%;
+  left: 6%;
+  transform: translate(-50%, -50%) rotate(-35deg);
+  background-color: var(--accent2);
+}
+
+.about-copy #tag-2 p {
+  color: var(--fg);
+}
+
+.about-copy #tag-3 {
+  top: 20%;
+  left: 86%;
+  transform: translate(-50%, -50%) rotate(8deg);
+  background-color: var(--accent3);
+}
+
+.about-copy #tag-4 {
+  top: 88%;
+  left: 15%;
+  transform: translate(-50%, -50%) rotate(40deg);
+  background-color: var(--accent4);
+}
+
+.about-copy #tag-5 {
+  top: 80%;
+  left: 88%;
+  transform: translate(-50%, -50%) rotate(-50deg);
+  background-color: var(--accent1);
+}
+
+/* about - skills */
+.skills {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 4em 2em 4em 2em;
+}
+
+.skills .skills-copy {
+  margin: 0 auto;
+  padding: 2em;
+  width: max-content;
+  text-align: center;
+  border: 0.2em dashed var(--fg);
+  border-radius: 1em;
+}
+
+/* testimonials */
+.testimonials {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  overflow-x: clip;
+  overflow-y: visible;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.testimonials .testimonials-header {
+  position: absolute;
+  top: 2em;
+  left: 2em;
+  z-index: 2;
+}
+
+.testimonials .testimonials-header h1 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  margin-bottom: 0.25em;
+}
+
+.testimonials .testimonials-header p {
+  opacity: 0.6;
+  font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+}
+
+.testimonials .testimonials-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+  width: max-content;
+  padding-top: 10em;
+  will-change: transform;
+}
+
+.testimonials .testimonials-row {
+  display: flex;
+  gap: 1.5em;
+}
+
+.testimonials .testimonial-card {
+  padding: 2em;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 12em;
+}
+
+.testimonials .testimonial-card .testimonial-quote {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 1.5em;
+}
+
+.testimonials .testimonial-card .testimonial-name {
+  font-weight: 700;
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  opacity: 0.8;
+}
+
+/* Varying widths — brick pattern */
+/* Row 1: narrow, wide, narrow, wide */
+.testimonials .testimonial-card-1 { width: 20em; background-color: var(--accent1); color: var(--bg); }
+.testimonials .testimonial-card-2 { width: 28em; background-color: var(--accent3); color: var(--bg); }
+.testimonials .testimonial-card-3 { width: 16em; background-color: var(--fg); color: var(--bg); }
+.testimonials .testimonial-card-4 { width: 26em; background-color: var(--accent2); color: var(--fg); }
+
+/* Row 1 continued */
+.testimonials .testimonial-card-5 { width: 26em; background-color: var(--accent2); color: var(--fg); }
+.testimonials .testimonial-card-6 { width: 18em; background-color: var(--fg); color: var(--bg); }
+
+/* Row 2: offset — wide, narrow, wide, narrow (staggered against row 1) */
+.testimonials .testimonial-card-7 { width: 22em; background-color: var(--accent3); color: var(--bg); }
+.testimonials .testimonial-card-8 { width: 26em; background-color: var(--accent1); color: var(--bg); }
+.testimonials .testimonial-card-9 { width: 28em; background-color: var(--accent2); color: var(--fg); }
+.testimonials .testimonial-card-10 { width: 22em; background-color: var(--fg); color: var(--bg); }
+.testimonials .testimonial-card-11 { width: 24em; background-color: var(--accent3); color: var(--bg); }
+.testimonials .testimonial-card-12 { width: 20em; background-color: var(--accent1); color: var(--bg); }
+
+/* Row 3: another offset pattern */
+.testimonials .testimonial-card-13 { width: 26em; background-color: var(--accent1); color: var(--bg); }
+.testimonials .testimonial-card-14 { width: 24em; background-color: var(--accent3); color: var(--bg); }
+.testimonials .testimonial-card-15 { width: 28em; background-color: var(--fg); color: var(--bg); }
+.testimonials .testimonial-card-16 { width: 22em; background-color: var(--accent2); color: var(--fg); }
+.testimonials .testimonial-card-17 { width: 24em; background-color: var(--accent3); color: var(--bg); }
+.testimonials .testimonial-card-18 { width: 14em; background-color: var(--accent1); color: var(--bg); }
+
+@media (max-width: 1000px) {
+  .about-hero {
+    padding: 8em 2em 4em 2em;
+  }
+
+  .about-hero .about-hero-header h1 {
+    font-size: 4rem;
+  }
+
+  .about-hero .about-hero-bio {
+    width: 100%;
+  }
+
+  .about-hero .about-hero-portrait {
+    width: 25%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  .about-hero .about-hero-portrait img {
+    position: absolute;
+    height: 110%;
+  }
+
+  .about-copy .about-copy-content {
+    width: 100%;
+  }
+
+  .about-copy .about-copy-content h3 {
+    font-size: 1.5rem;
+  }
+
+  .about-copy .tag {
+    display: none;
+  }
+
+  .skills .skills-copy {
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    border: none;
+    border-radius: 0;
+  }
+
+  .testimonials {
+    height: auto;
+    padding: 4em 2em;
+  }
+
+  .testimonials .testimonials-header {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-bottom: 2em;
+  }
+
+  .testimonials .testimonials-track {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .testimonials .testimonials-row {
+    flex-direction: column;
+  }
+
+  .testimonials .testimonial-card {
+    width: 100% !important;
+  }
+}

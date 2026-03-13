@@ -1,0 +1,263 @@
+/* footer */
+footer {
+  position: relative;
+  width: 100vw;
+  height: 85svh;
+  color: var(--bg);
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+footer .footer-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--fg);
+  padding: 3em;
+  border-radius: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+footer .footer-header {
+  position: relative;
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+footer .footer-header h1 {
+  font-size: clamp(1.5rem, 6vw, 8rem);
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 0.8;
+  margin: 0;
+}
+
+footer span {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+footer .tilt-a { transform: rotate(-7deg); }
+footer .tilt-s { transform: rotate(7deg); }
+
+
+footer .footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4em;
+  margin-bottom: 4em;
+}
+
+footer .footer-social {
+  margin-left: auto;
+}
+
+footer .footer-section {
+  flex: 1;
+}
+
+footer .footer-contact .address {
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  font-weight: 600;
+  margin-bottom: 1em;
+  line-height: 1.3;
+}
+
+footer .footer-storefront {
+  width: 100%;
+  max-width: 28rem;
+  height: auto;
+  opacity: 0.85;
+}
+
+footer .footer-contact .phone,
+footer .footer-contact .email,
+footer .footer-social .phone,
+footer .footer-social .email {
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+  margin-bottom: 0.5em;
+  opacity: 0.8;
+}
+
+footer .footer-social .phone {
+  margin-top: 1.5em;
+}
+
+footer .footer-hours h3,
+footer .footer-social h3 {
+  font-size: clamp(0.9rem, 1.5vw, 1.3rem);
+  font-weight: 700;
+  margin-bottom: 1.5em;
+  font-family: "montserrat";
+  text-transform: uppercase;
+}
+
+footer .hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+footer .hours-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: "montserrat";
+  font-size: clamp(0.75rem, 1.2vw, 1.1rem);
+  gap: 1em;
+}
+
+footer .hours-row span:first-child {
+  font-weight: 600;
+}
+
+footer .hours-row span:last-child {
+  opacity: 0.8;
+}
+
+footer .footer-social p {
+  margin-bottom: 0.5em;
+}
+
+footer .footer-social a {
+  color: var(--bg);
+  opacity: 0.8;
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  display: inline-block;
+  margin-right: 1em;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+footer .footer-social a:hover {
+  opacity: 1;
+  transform: scale(1.1);
+  color: white;
+}
+
+footer .footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 3em;
+  padding: 2em 0;
+  margin-bottom: 1em;
+  margin-top: 2em;
+}
+
+footer .footer-nav a {
+  color: var(--bg);
+  font-family: "montserrat";
+  font-weight: 600;
+  font-size: clamp(0.75rem, 1.2vw, 1.1rem);
+  text-transform: uppercase;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+footer .footer-nav a:hover {
+  opacity: 1;
+}
+
+footer .copyright-info {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+footer .copyright-info p {
+  opacity: 0.5;
+  font-size: clamp(0.85rem, 3vw, 1.3rem);
+  white-space: nowrap;
+}
+
+/* Hibiscus corner flowers */
+footer .footer-hib {
+  position: absolute;
+  width: clamp(4rem, 8vw, 7rem);
+  height: auto;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+  filter: invert(1);
+}
+
+footer .footer-hib-tl {
+  top: 1em;
+  left: 1em;
+}
+
+footer .footer-hib-tr {
+  top: 1em;
+  right: 1em;
+  transform: scaleX(-1);
+}
+
+footer .footer-hib-bl {
+  bottom: 1em;
+  left: 1em;
+  transform: rotate(180deg);
+}
+
+footer .footer-hib-br {
+  bottom: 1em;
+  right: 1em;
+  transform: rotate(180deg) scaleX(-1);
+}
+
+@media (max-width: 1000px) {
+  footer {
+    height: 100svh;
+  }
+
+  footer .footer-container {
+    padding: 2em;
+  }
+
+  footer .footer-content {
+    flex-direction: column;
+    gap: 2em;
+    margin-bottom: 2em;
+  }
+
+  footer .footer-nav {
+    flex-wrap: wrap;
+    gap: 1.5em;
+  }
+
+  footer .footer-storefront {
+    display: none;
+  }
+
+  footer .footer-hib {
+    display: none;
+  }
+
+  footer .footer-contact .address {
+    font-size: 1.6rem;
+  }
+  
+  footer .footer-header h1 {
+    font-size: clamp(2.2rem, 10vw, 5rem);
+    white-space: nowrap;
+  }
+
+  footer .hours-list {
+    gap: 0.6em;
+  }
+
+  footer .hours-row {
+    font-size: clamp(0.7rem, 2.5vw, 1rem);
+  }
+
+  footer .hours-row span {
+    white-space: nowrap;
+  }
+}

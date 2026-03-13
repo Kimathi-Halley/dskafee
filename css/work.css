@@ -1,0 +1,348 @@
+/* work - header */
+.work-header {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.work-header .work-profile-icon {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 1em;
+  margin-bottom: 1em;
+  outline: 0.25rem solid var(--accent1);
+  border: 0.25rem solid var(--fg);
+  overflow: hidden;
+}
+
+.work-header .work-header-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.work-header .work-header-title {
+  margin-bottom: 6em;
+}
+
+.work-header .work-footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  padding: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+.work-header .work-footer .work-footer-scroll-down {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* work - work items */
+.work-items {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  padding: 2em;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 4em;
+  margin-bottom: 8em;
+}
+
+/* SplitText line animation helpers */
+.work-header-content p,
+.work-header-title h1 {
+  line-height: 1.1;
+}
+
+.work-header-content p > div,
+.work-header-title h1 > div {
+  position: relative;
+  padding: 0 0.25em;
+}
+
+/* ============================================
+   MENU CATEGORY SECTIONS
+   ============================================ */
+
+.work-items .menu-category {
+  width: 100%;
+}
+
+.work-items .menu-category-inner {
+  position: relative;
+  width: 100%;
+  padding: 3em;
+  border-radius: 2em;
+  border: 0.3em solid var(--fg);
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  overflow: hidden;
+}
+
+/* Stripe texture overlay — removed for clean solid look */
+
+/* Category colors */
+.menu-category-red {
+  background-color: var(--accent1);
+  position: relative;
+}
+.menu-category-red::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/global/drink-tint.png");
+  background-size: 500px auto;
+  background-repeat: repeat;
+  background-position: center;
+  filter: invert(1);
+  opacity: 0.04;
+  pointer-events: none;
+  border-radius: 2em;
+}
+.menu-category-blue {
+  background-color: var(--accent2);
+  position: relative;
+}
+.menu-category-blue::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/global/brunch-tint.png");
+  background-size: 500px auto;
+  background-repeat: repeat;
+  background-position: center;
+  filter: invert(1);
+  opacity: 0.04;
+  pointer-events: none;
+  border-radius: 2em;
+}
+.menu-category-orange {
+  background-color: var(--accent3);
+  position: relative;
+}
+.menu-category-orange::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/global/dinner-tint.png");
+  background-size: 500px auto;
+  background-repeat: repeat;
+  background-position: center;
+  filter: invert(1);
+  opacity: 0.04;
+  pointer-events: none;
+  border-radius: 2em;
+}
+.menu-category-black {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+/* Dark category text overrides */
+.menu-category-black h3,
+.menu-category-black p,
+.menu-category-black .menu-price,
+.menu-category-black .menu-description {
+  color: var(--bg);
+}
+
+/* Category header */
+.menu-category-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding-bottom: 1em;
+  border-bottom: 0.2em dashed rgba(0, 0, 0, 0.2);
+}
+
+.menu-category-black .menu-category-header {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+}
+
+.menu-category-header h1 {
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.9;
+}
+
+/* ============================================
+   MENU CARD GRID
+   ============================================ */
+
+.menu-category-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2em;
+}
+
+/* Individual menu card */
+.menu-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 1.5em;
+  padding: 1em;
+  border: 0.15em solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.menu-category-black .menu-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Text-only cards */
+.menu-card-text-only {
+  padding: 1.5em;
+  justify-content: center;
+}
+
+/* Menu card image */
+.menu-card-img {
+  aspect-ratio: 16/10;
+  border-radius: 1em;
+  overflow: hidden;
+  border: 0.15em solid rgba(0, 0, 0, 0.15);
+}
+
+/* Menu card info */
+.menu-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  padding: 0.25em 0.5em;
+}
+
+/* Name + Price row */
+.menu-card-name-price {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1em;
+}
+
+.menu-card-name-price h3 {
+  font-size: clamp(1.1rem, 1.8vw, 1.6rem);
+  line-height: 1.1;
+  flex: 1;
+}
+
+/* Price tag */
+.menu-price {
+  font-family: "nurture-your-best";
+  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-weight: 400;
+  white-space: nowrap;
+  background: var(--fg);
+  color: var(--bg);
+  padding: 0.15em 0.5em;
+  border-radius: 0.5em;
+  line-height: 1.2;
+}
+
+.menu-category-black .menu-price {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Description */
+.menu-description {
+  font-family: "montserrat";
+  font-size: clamp(0.8rem, 1vw, 0.95rem);
+  font-weight: 300;
+  line-height: 1.4;
+  opacity: 0.85;
+  text-transform: none;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1000px) {
+  .work-header .work-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .work-header .work-footer .work-footer-scroll-down {
+    left: 2em;
+    transform: translateX(0%);
+  }
+
+  .work-items {
+    padding: 1em;
+    gap: 2em;
+  }
+
+  .work-items .menu-category-inner {
+    padding: 2em 1.5em;
+    border-radius: 1.5em;
+    border-width: 0.2em;
+  }
+
+  .menu-category-header h1 {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+
+  .menu-category-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5em;
+  }
+
+  .menu-card {
+    padding: 0.75em;
+  }
+
+  .menu-card-img {
+    aspect-ratio: 16/9;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-items .menu-category-inner {
+    padding: 1.5em 1em;
+    border-radius: 1em;
+  }
+
+  .menu-card-name-price {
+    flex-direction: column;
+    gap: 0.25em;
+  }
+
+  .menu-price {
+    align-self: flex-start;
+  }
+}
