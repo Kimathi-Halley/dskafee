@@ -39,20 +39,16 @@ document.addEventListener("DOMContentLoaded", () => {
   function isSamePage(href) {
     if (!href || href === "#" || href === "") return true;
 
-    const currentPath = window.location.pathname;
-    const currentFileName = currentPath.split("/").pop() || "index.html";
-    const hrefFileName = href.split("/").pop() || "index.html";
+    // Normalize paths: strip trailing slashes and index.html
+    function normalize(path) {
+      path = path.replace(/\/index\.html$/, "/").replace(/\/$/, "") || "/";
+      return path;
+    }
 
-    // Handle home page variations
-    const homeAliases = ["", "index.html", "./", ".", "/"];
-    const currentIsHome = homeAliases.includes(currentFileName) || currentPath.endsWith("/");
-    const hrefIsHome = homeAliases.includes(hrefFileName) || homeAliases.includes(href);
+    const currentNorm = normalize(window.location.pathname);
+    const hrefNorm = normalize(new URL(href, window.location.href).pathname);
 
-    if (currentIsHome && hrefIsHome) return true;
-
-    if (currentFileName === hrefFileName) return true;
-
-    return false;
+    return currentNorm === hrefNorm;
   }
 
   document.querySelectorAll("a").forEach((link) => {

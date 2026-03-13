@@ -2,15 +2,15 @@ import { defineConfig } from "vite";
 import { resolve } from "path";
 
 export default defineConfig({
-  base: "./",
+  base: "/",
   build: {
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
-        about: resolve(__dirname, "about.html"),
-        work: resolve(__dirname, "work.html"),
-        project: resolve(__dirname, "project.html"),
-        contact: resolve(__dirname, "contact.html"),
+        menu: resolve(__dirname, "menu/index.html"),
+        about: resolve(__dirname, "about/index.html"),
+        project: resolve(__dirname, "project/index.html"),
+        contact: resolve(__dirname, "contact/index.html"),
       },
     },
     assetsInclude: [

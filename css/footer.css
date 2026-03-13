@@ -264,10 +264,15 @@ footer .footer-hib-br {
 
 @media (max-width: 480px) {
   footer .footer-header h1 {
-    font-size: clamp(1.6rem, 8vw, 2.2rem);
+    font-size: clamp(1.4rem, 7.5vw, 2.2rem);
+    white-space: nowrap;
   }
 
   footer .hours-row {
     font-size: clamp(0.65rem, 2.2vw, 0.85rem);
+  }
+
+  footer .hours-row span {
+    white-space: nowrap;
   }
 }
