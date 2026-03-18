@@ -11,7 +11,8 @@
   overflow-x: hidden;
 }
 
-.hero .hero-header h1 {
+.hero .hero-header h1,
+.hero .hero-header .hero-h1 {
   font-size: 18vw;
   line-height: 0.9;
 }

@@ -31,7 +31,7 @@ footer .footer-header {
   margin-bottom: 3em;
 }
 
-footer .footer-header h1 {
+footer .footer-header h2 {
   font-size: clamp(1.5rem, 6vw, 8rem);
   font-weight: bold;
   text-transform: uppercase;
@@ -244,7 +244,7 @@ footer .footer-hib-br {
     font-size: 1.6rem;
   }
   
-  footer .footer-header h1 {
+  footer .footer-header h2 {
     font-size: clamp(2.2rem, 10vw, 5rem);
     white-space: nowrap;
   }
@@ -263,7 +263,7 @@ footer .footer-hib-br {
 }
 
 @media (max-width: 480px) {
-  footer .footer-header h1 {
+  footer .footer-header h2 {
     font-size: clamp(1.4rem, 7.5vw, 2.2rem);
     white-space: nowrap;
   }

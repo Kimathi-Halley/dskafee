@@ -151,7 +151,7 @@ p.mn {
   z-index: 1;
 }
 
-.contact-cta .contact-text-large h1 {
+.contact-cta .contact-text-large h2 {
   font-size: clamp(3rem, 8vw, 7rem);
 }
 
