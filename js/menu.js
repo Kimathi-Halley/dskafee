@@ -7,9 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeLabel = document.querySelector(".close-label");
   const navItems = document.querySelectorAll(".nav-item");
   const menuSunIcon = document.querySelector(".menu-sun-icon");
+  const nav = document.querySelector("nav");
   let isMenuOpen = false;
   let isAnimating = false;
   let scrollY = 0;
+
+  // Scroll-based nav shrink + floating pill
+  const SCROLL_THRESHOLD = 50;
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > SCROLL_THRESHOLD) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  });
 
   // Handle sun icon hover effects — swap to orange SVG
   menuToggleBtn.addEventListener("mouseenter", () => {

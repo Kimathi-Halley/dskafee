@@ -10,6 +10,20 @@ nav {
   align-items: center;
   overflow-x: hidden;
   z-index: 100;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+nav.scrolled {
+  top: 0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100vw - 3em);
+  padding: 0.25em 1.25em;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 nav .logo {
@@ -17,10 +31,15 @@ nav .logo {
 }
 
 nav .logo .logo-img {
-  height: clamp(3rem, 5vw, 4.5rem);
+  height: clamp(4rem, 7vw, 6rem);
   width: auto;
   object-fit: contain;
   display: block;
+  transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+nav.scrolled .logo .logo-img {
+  height: clamp(3rem, 5vw, 4.5rem);
 }
 
 
@@ -41,10 +60,15 @@ nav .menu-toggle-btn p {
 }
 
 .menu-sun-icon {
+  width: 4.5rem;
+  height: 4.5rem;
+  transition: transform 0.5s ease, width 0.4s cubic-bezier(0.22, 1, 0.36, 1), height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  display: block;
+}
+
+nav.scrolled .menu-sun-icon {
   width: 3.5rem;
   height: 3.5rem;
-  transition: transform 0.5s ease;
-  display: block;
 }
 
 nav .menu-toggle-btn:hover .menu-sun-icon {
