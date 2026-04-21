@@ -325,15 +325,6 @@
    ============================================ */
 
 @media (max-width: 1000px) {
-  .work-header .work-footer {
-    display: flex;
-    justify-content: flex-end;
-  }
-
-  .work-header .work-footer .work-footer-scroll-down {
-    left: 2em;
-    transform: translateX(0%);
-  }
 
   .work-items {
     padding: 1em;
