@@ -7,6 +7,12 @@
       "runtimeArgs": ["node_modules/.bin/vite", "--port", "5174"],
       "env": { "PATH": "/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin" },
       "port": 5174
+    },
+    {
+      "name": "ablp-static",
+      "runtimeExecutable": "/bin/sh",
+      "runtimeArgs": ["-c", "cd /Users/kimathi/Downloads/ablpantigua.com && python3 -m http.server 8765"],
+      "port": 8765
     }
   ]
 }

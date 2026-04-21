@@ -8,6 +8,23 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  overflow: hidden;
+}
+
+.work-page .work-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/images/hero/hero-welcome-menu.webp") center/cover no-repeat;
+  opacity: 0.35;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+}
+
+.work-page .work-header > * {
+  position: relative;
+  z-index: 1;
 }
 
 .work-header .work-profile-icon {
@@ -277,7 +294,7 @@
 
 /* Price tag */
 .menu-price {
-  font-family: "nurture-your-best";
+  font-family: "nurture-your-best", "montserrat", sans-serif;
   font-size: clamp(1.4rem, 2.2vw, 2rem);
   font-weight: 400;
   white-space: nowrap;
