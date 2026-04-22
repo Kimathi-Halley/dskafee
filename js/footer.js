@@ -9,35 +9,36 @@ document.addEventListener("DOMContentLoaded", () => {
   const config = {
     gravity: 0.25,
     friction: 0.99,
-    imageSize: 150,
+    imageSize: 100,
     horizontalForce: 20,
     verticalForce: 15,
     rotationSpeed: 10,
     resetDelay: 500,
   };
 
-  const imageParticleCount = 9;
-  const caribbeanFlags = ['🇦🇬', '🇩🇲', '🇰🇳', '🇬🇩', '🇧🇧', '🇬🇾', '🇯🇲', '🇹🇹', '🇱🇨'];
-  const imagePaths = Array.from(
-    { length: imageParticleCount },
-    (_, i) => {
-      const canvas = document.createElement('canvas');
-      canvas.width = 150;
-      canvas.height = 150;
-      const ctx = canvas.getContext('2d');
-      
-      // Set background to transparent
-      ctx.clearRect(0, 0, 150, 150);
-      
-      // Draw flag emoji
-      ctx.font = '120px Arial';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(caribbeanFlags[i % caribbeanFlags.length], 75, 75);
-      
-      return canvas.toDataURL();
-    }
-  );
+  // Caribbean country ISO codes — SVGs served from flag-icons CDN
+  const caribbeanCodes = [
+    'ag', // Antigua & Barbuda
+    'dm', // Dominica
+    'kn', // St. Kitts & Nevis
+    'gd', // Grenada
+    'bb', // Barbados
+    'gy', // Guyana
+    'jm', // Jamaica
+    'tt', // Trinidad & Tobago
+    'lc', // St. Lucia
+    'bs', // Bahamas
+    'ht', // Haiti
+    'do', // Dominican Republic
+    'vc', // St. Vincent & the Grenadines
+    'sr', // Suriname
+    'bz', // Belize
+    'cu', // Cuba
+    'ky', // Cayman Islands
+  ];
+  const FLAG_CDN = 'https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/flags/4x3';
+  const imagePaths = caribbeanCodes.map((code) => `${FLAG_CDN}/${code}.svg`);
+  const imageParticleCount = imagePaths.length;
 
   imagePaths.forEach((path) => {
     const img = new Image();

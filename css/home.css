@@ -45,6 +45,10 @@
   transform: translateX(-50%);
 }
 
+.hero .hero-tagline {
+  font-size: clamp(0.95rem, 3.2vw, 1.5rem);
+}
+
 /* home - hero img holder */
 .hero-img-holder {
   position: relative;
@@ -191,8 +195,8 @@
   }
 
   .hero .hero-footer .hero-footer-scroll-down {
-    left: 2em;
-    transform: translateX(0%);
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .services-header {

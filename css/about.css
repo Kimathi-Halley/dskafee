@@ -240,6 +240,7 @@
 
 /* Varying widths — brick pattern */
 /* Row 1: narrow, wide, narrow, wide */
+.testimonials .testimonial-card-0 { width: 26em; background-color: var(--accent2); color: var(--fg); }
 .testimonials .testimonial-card-1 { width: 20em; background-color: var(--accent1); color: var(--bg); }
 .testimonials .testimonial-card-2 { width: 28em; background-color: var(--accent3); color: var(--bg); }
 .testimonials .testimonial-card-3 { width: 16em; background-color: var(--fg); color: var(--bg); }
