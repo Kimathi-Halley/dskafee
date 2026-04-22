@@ -60,12 +60,85 @@
   margin-bottom: 6em;
 }
 
+/* Asterisk trigger + popout note */
+.work-header-subtitle {
+  position: relative;
+  display: inline-block;
+}
+
+.work-header-note-trigger {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0 0.1em;
+  margin-left: 0.1em;
+  font-size: inherit;
+  line-height: 1;
+  opacity: 0.65;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.work-header-note-trigger:hover,
+.work-header-note-trigger[aria-expanded="true"] {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
 .work-header .work-header-note {
-  margin-top: 0.75em;
-  font-size: clamp(0.6rem, 1.4vw, 0.85rem);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.6;
+  position: absolute;
+  top: calc(100% + 0.5em);
+  left: 50%;
+  transform: translateX(-50%) translateY(-4px);
+  white-space: nowrap;
+  font-family: "nurture-your-best", "montserrat", sans-serif;
+  font-size: clamp(0.9rem, 1.4vw, 1.2rem);
+  letter-spacing: 0.04em;
+  text-transform: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+  padding: 0.4em 0.9em;
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 5;
+}
+
+@media (hover: hover) {
+  .work-header-note-trigger:hover + .work-header-note {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+}
+
+.work-header-note-trigger[aria-expanded="true"] + .work-header-note {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+/* Desktop: popout appears to the right of the asterisk instead of below */
+@media (min-width: 1001px) {
+  .work-header .work-header-note {
+    top: 50%;
+    left: calc(100% + 0.5em);
+    transform: translateY(-50%) translateX(-4px);
+  }
+  @media (hover: hover) {
+    .work-header-note-trigger:hover + .work-header-note {
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+  .work-header-note-trigger[aria-expanded="true"] + .work-header-note {
+    transform: translateY(-50%) translateX(0);
+  }
 }
 
 .work-header .work-footer {
@@ -239,7 +312,6 @@
   grid-column: 1 / -1;
   padding: 0.25em 0;
   margin: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .menu-subcategory-label h3 {

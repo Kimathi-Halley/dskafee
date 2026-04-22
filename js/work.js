@@ -8,13 +8,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gsap.registerPlugin(ScrollTrigger, SplitText);
 
+  // Hero note asterisk — tap toggle (hover handled in CSS on desktop)
+  const noteTrigger = document.querySelector(".work-header-note-trigger");
+  if (noteTrigger) {
+    noteTrigger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const open = noteTrigger.getAttribute("aria-expanded") === "true";
+      noteTrigger.setAttribute("aria-expanded", open ? "false" : "true");
+    });
+    document.addEventListener("click", () => {
+      noteTrigger.setAttribute("aria-expanded", "false");
+    });
+  }
+
+
   let scrollTriggerInstances = [];
 
   const initHeaderAnimations = () => {
     gsap.set(".work-profile-icon", { scale: 0 });
     gsap.set(".work-header-arrow-icon", { scale: 0 });
 
-    const feastText = SplitText.create(".work-header-content p", {
+    const feastText = SplitText.create(".work-header-content > p", {
       type: "lines",
       mask: "lines",
     });

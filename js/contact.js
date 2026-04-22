@@ -18,19 +18,16 @@ document.addEventListener("DOMContentLoaded", () => {
     outEasing: "cubic-bezier(.87, 0, .13, 1)",
   };
 
-  const colors = ['#141414', '#ff3333', '#f4e4bc', '#ffb347', '#1a1a1a'];
-  const images = Array.from(
-    { length: config.imageCount },
-    (_, i) => {
-      const canvas = document.createElement('canvas');
-      canvas.width = 100;
-      canvas.height = 100;
-      const ctx = canvas.getContext('2d');
-      ctx.fillStyle = colors[i % colors.length];
-      ctx.fillRect(0, 0, 100, 100);
-      return canvas.toDataURL();
-    }
-  );
+  const images = [
+    "/images/flowers/flower-1.svg",
+    "/images/flowers/flower-2.svg",
+    "/images/flowers/flower3.svg",
+    "/images/flowers/flower-4.svg",
+    "/images/flowers/flower-5.svg",
+    "/images/logo/sun-black.svg",
+    "/images/logo/sun-orange.svg",
+    "/images/logo/sun-white.svg",
+  ];
   const trail = [];
 
   let mouseX = 0,

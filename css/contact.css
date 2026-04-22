@@ -14,10 +14,9 @@
 
 .contact .trail-img {
   position: absolute;
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 1em;
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
   transform-origin: center;
   pointer-events: none;
   will-change: transform;

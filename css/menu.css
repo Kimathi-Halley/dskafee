@@ -1,29 +1,49 @@
-/* navbar */
+/* navbar — nav itself never animates layout (no jitter).
+   Pill background lives on ::before and slides in via `inset`.
+   Padding compresses on an inner wrapper so content layout stays stable. */
 nav {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  padding: 2em;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  overflow-x: hidden;
+  width: 100%;
+  padding: 0;
   z-index: 100;
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-nav.scrolled {
-  top: 0.5em;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100vw - 3em);
-  padding: 0.25em 1.25em;
+nav::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 0;
+  z-index: -1;
+  transition:
+    inset 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.4s ease,
+    border-color 0.4s ease,
+    border-radius 0.4s ease;
+}
+
+nav.scrolled::before {
+  inset: 0.5em 1.5em;
   background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: 100px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
+  transition: padding 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+nav.scrolled .nav-inner {
+  padding: 0.75em 2.75em;
 }
 
 nav .logo {
@@ -38,7 +58,7 @@ nav .logo::before {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 78%;
+  width: 95%;
   aspect-ratio: 1 / 1;
   transform: translate(-50%, -50%);
   background: rgba(255, 255, 255, 0.45);
@@ -51,8 +71,22 @@ nav .logo::before {
   transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-nav.scrolled .logo::before {
+nav.scrolled .logo::before,
+nav:has(.menu-toggle-btn.menu-open) .logo::before {
   opacity: 0;
+}
+
+/* desktop: beef up the halo on hover so it reads clearly against the hero */
+@media (hover: hover) {
+  nav:not(.scrolled) .logo:hover::before {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+}
+nav .logo::before {
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              background 0.25s ease,
+              border-color 0.25s ease;
 }
 
 nav .logo .logo-img {
@@ -126,12 +160,15 @@ nav .menu-toggle-btn-wrapper {
   width: 100vw;
   height: 100svh;
   background: linear-gradient(180deg,
-    rgba(43, 168, 154, 0.95) 0%,      /* Caribbean teal */
-    rgba(56, 178, 130, 0.95) 25%,     /* Seafoam */
-    rgba(226, 180, 48, 0.95) 50%,     /* Sunshine gold */
-    rgba(76, 175, 80, 0.95) 75%,      /* Palm green */
-    rgba(27, 77, 62, 0.95) 100%       /* Deep forest */
+    rgba(43, 168, 154, 0.75) 0%,     /* Caribbean teal */
+    rgba(60, 196, 168, 0.75) 15%,    /* Bright seafoam */
+    rgba(107, 212, 160, 0.75) 35%,   /* Tropical mint */
+    rgba(176, 216, 144, 0.75) 55%,   /* Light palm green */
+    rgba(224, 220, 186, 0.75) 75%,   /* Warm sand */
+    rgba(245, 240, 224, 0.75) 100%   /* Coconut cream */
   );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   overflow: hidden;
   pointer-events: none;
   opacity: 0;
