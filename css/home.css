@@ -220,8 +220,15 @@
   }
 
   .services .service-card-img {
-    aspect-ratio: 5/3;
+    aspect-ratio: auto;
     border: 0.2em solid var(--fg);
     border-radius: 1em;
+  }
+
+  .services .service-card-img img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
   }
 }
