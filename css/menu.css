@@ -27,7 +27,32 @@ nav.scrolled {
 }
 
 nav .logo {
+  position: relative;
   padding: 0.25em;
+}
+
+/* translucent circle halo behind the logo artwork — only visible at top of page.
+   Same color as the scrolled-nav pill so the handoff is seamless. */
+nav .logo::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 78%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 1;
+  transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+nav.scrolled .logo::before {
+  opacity: 0;
 }
 
 nav .logo .logo-img {

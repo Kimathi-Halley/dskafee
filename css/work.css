@@ -15,11 +15,21 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: url("/images/hero/hero-welcome-menu.webp") center/cover no-repeat;
+  background: url("/images/hero/hero-menu-new.webp") no-repeat;
+  background-size: cover;
+  /* ornament sits in the upper portion of the source image;
+     on wide viewports `cover` crops top/bottom, so pull the focal point up */
+  background-position: center 22%;
   opacity: 0.35;
   z-index: 0;
   -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
   mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+}
+
+@media (max-width: 1000px) {
+  .work-page .work-header::before {
+    background-position: center center;
+  }
 }
 
 .work-page .work-header > * {
@@ -48,6 +58,14 @@
 
 .work-header .work-header-title {
   margin-bottom: 6em;
+}
+
+.work-header .work-header-note {
+  margin-top: 0.75em;
+  font-size: clamp(0.6rem, 1.4vw, 0.85rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
 }
 
 .work-header .work-footer {
@@ -294,8 +312,9 @@
 
 /* Price tag */
 .menu-price {
-  font-family: "nurture-your-best", "montserrat", sans-serif;
-  font-size: clamp(1.4rem, 2.2vw, 2rem);
+  font-family: "Caveat Brush", "montserrat", sans-serif;
+  font-size: clamp(1.1rem, 1.5vw, 1.4rem);
+  letter-spacing: 0.02em;
   font-weight: 400;
   white-space: nowrap;
   background: var(--fg);
