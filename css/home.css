@@ -188,6 +188,17 @@
   color: var(--bg);
 }
 
+.services #service-card-5 .service-card-inner {
+  background-color: var(--accent4);
+  color: var(--bg);
+}
+
+.services .service-card-note {
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  opacity: 0.8;
+  margin-top: -1em;
+}
+
 @media (max-width: 1000px) {
   .hero .hero-footer {
     display: flex;

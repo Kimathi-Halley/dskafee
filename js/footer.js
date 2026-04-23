@@ -36,13 +36,23 @@ document.addEventListener("DOMContentLoaded", () => {
     'cu', // Cuba
     'ky', // Cayman Islands
   ];
-  const FLAG_CDN = 'https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/flags/4x3';
-  const imagePaths = caribbeanCodes.map((code) => `${FLAG_CDN}/${code}.svg`);
+  const FLAG_DIR = '/images/flags';
+  const imagePaths = caribbeanCodes.map((code) => `${FLAG_DIR}/${code}.svg`);
   const imageParticleCount = imagePaths.length;
 
-  imagePaths.forEach((path) => {
-    const img = new Image();
-    img.src = path;
+  let imagesReady = false;
+  Promise.all(
+    imagePaths.map(
+      (path) =>
+        new Promise((resolve) => {
+          const img = new Image();
+          img.onload = img.onerror = () => resolve();
+          img.src = path;
+        })
+    )
+  ).then(() => {
+    imagesReady = true;
+    checkFooterPosition();
   });
 
   const createParticles = () => {
@@ -84,6 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const explode = () => {
     if (hasExploded) return;
+    if (!imagesReady) return;
     hasExploded = true;
 
     createParticles();
