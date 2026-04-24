@@ -200,6 +200,44 @@
   flex-direction: column;
   gap: 2em;
   overflow: hidden;
+  transition: gap 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Accordion behavior — categories collapse to just the header */
+.menu-category-header {
+  cursor: pointer;
+  user-select: none;
+}
+
+.menu-category-body {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.menu-category.collapsed .menu-category-body {
+  grid-template-rows: 0fr;
+}
+
+.menu-category-body > * {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.menu-category.collapsed .menu-category-inner {
+  gap: 0;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.menu-category-header {
+  transition: padding-bottom 0.45s, border-bottom-color 0.45s;
+}
+
+.menu-category.collapsed .menu-category-header {
+  padding-bottom: 0;
+  border-bottom-color: transparent;
 }
 
 /* Stripe texture overlay — removed for clean solid look */

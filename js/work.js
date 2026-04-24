@@ -155,8 +155,117 @@ document.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.refresh();
   };
 
+  // Accordion: each category starts collapsed, clicking its header expands it.
+  // Single-open — clicking another header collapses the rest. Clicking the open
+  // header collapses it.
+  const initAccordion = () => {
+    // Slide h2 between left-aligned (expanded) and centered (collapsed).
+    // We can't animate text-align or justify-content, so we use transform: x
+    // measured at runtime. Preserves the exact same visual endpoints.
+    const setHeaderAlignment = (category, collapsed, animated) => {
+      const header = category.querySelector(".menu-category-header");
+      const h2 = header?.querySelector("h2");
+      if (!h2) return;
+      // Measure from the neutral (x=0) position
+      gsap.set(h2, { x: 0 });
+      const headerW = header.getBoundingClientRect().width;
+      const h2W = h2.getBoundingClientRect().width;
+      const centerOffset = Math.max(0, (headerW - h2W) / 2);
+      const target = collapsed ? centerOffset : 0;
+      if (animated) {
+        gsap.to(h2, {
+          x: target,
+          duration: 0.45,
+          ease: "power2.inOut",
+        });
+      } else {
+        gsap.set(h2, { x: target });
+      }
+    };
+
+    const categories = document.querySelectorAll(".menu-category");
+
+    categories.forEach((category) => {
+      const header = category.querySelector(".menu-category-header");
+      const grid = category.querySelector(".menu-category-grid");
+      if (!header || !grid) return;
+
+      // Wrap the grid in a body div so we can animate grid-template-rows.
+      if (!category.querySelector(".menu-category-body")) {
+        const body = document.createElement("div");
+        body.className = "menu-category-body";
+        grid.parentNode.insertBefore(body, grid);
+        body.appendChild(grid);
+      }
+
+      category.classList.add("collapsed");
+
+      header.addEventListener("click", () => {
+        const willOpen = category.classList.contains("collapsed");
+
+        // Close others (animate their titles back to center too)
+        categories.forEach((c) => {
+          if (c !== category && !c.classList.contains("collapsed")) {
+            c.classList.add("collapsed");
+            setHeaderAlignment(c, true, true);
+          }
+        });
+
+        if (willOpen) {
+          category.classList.remove("collapsed");
+          setHeaderAlignment(category, false, true);
+          gsap.set(category.querySelectorAll(".work-item"), {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          });
+        } else {
+          category.classList.add("collapsed");
+          setHeaderAlignment(category, true, true);
+        }
+
+        // Layout changed — recalc ScrollTrigger positions AFTER the accordion
+        // transition settles. Calling refresh() immediately while other
+        // categories are still mid-intro-animation can cancel those timelines.
+        clearTimeout(window.__menuRefreshTimer);
+        window.__menuRefreshTimer = setTimeout(() => {
+          ScrollTrigger.refresh();
+        }, 500);
+
+        // Auto-scroll the opened category into view. Defer until the collapse/
+        // expand transitions settle so lenis reads the correct target position.
+        if (willOpen) {
+          clearTimeout(window.__menuScrollTimer);
+          window.__menuScrollTimer = setTimeout(() => {
+            if (window.lenis && typeof window.lenis.scrollTo === "function") {
+              window.lenis.scrollTo(category, {
+                offset: -80,
+                duration: 0.9,
+              });
+            } else {
+              category.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+          }, 480);
+        }
+      });
+    });
+
+    // Set initial centered alignment on all collapsed headers (no animation)
+    const alignAll = () => {
+      categories.forEach((c) => {
+        setHeaderAlignment(c, c.classList.contains("collapsed"), false);
+      });
+    };
+    // Run after layout is stable
+    requestAnimationFrame(alignAll);
+
+    // Re-measure on resize so the center offset stays correct
+    window.addEventListener("resize", alignAll);
+  };
+
   initHeaderAnimations();
   initAnimations();
+  initAccordion();
 
   window.addEventListener("resize", () => {
     initAnimations();

@@ -22,6 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   let lenis = new Lenis(getScrollSettings(isMobile));
+  // Expose for other scripts that need programmatic scrolling
+  window.lenis = lenis;
 
   lenis.on("scroll", ScrollTrigger.update);
 
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (wasMobile !== isMobile) {
       lenis.destroy();
       lenis = new Lenis(getScrollSettings(isMobile));
+      window.lenis = lenis;
       lenis.on("scroll", ScrollTrigger.update);
     }
   };
