@@ -8,24 +8,57 @@ document.addEventListener("DOMContentLoaded", () => {
   gsap.registerPlugin(ScrollTrigger);
 
   const heroImg = document.querySelector(".hero-img img");
-  const heroImages = [
-    "hero-colorful-table-setting-glasses.webp",
-    "hero-outdoor-dining-green-chairs-v2.webp",
-    "hero-full-outdoor-dining-green-chairs-wide.webp",
-    "hero-dining-area-wide-tropical.webp",
-    "hero-patio-sun-sculpture-green-chairs.webp",
-    "hero-dawnes-soleil-kafe-sign.webp",
-    "hero-kafe-exterior-tropical-entrance.webp",
-    "hero-bar-signs-ti-trou-gorge.webp",
-    "hero-patio-dining-lush-palms.webp",
-    "hero-indoor-booth-blue-table-yellow-wall.webp",
-  ];
+
+  // Auto-discover images at build time.
+  // Drop landscape photos into /hero-rotation/landscape/ — shown on wide screens.
+  // Drop portrait photos into /hero-rotation/portrait/ — shown on tall screens.
+  // The correct set is picked based on the viewport's orientation.
+  const landscapeModules = import.meta.glob(
+    "/hero-rotation/landscape/*.{webp,jpg,jpeg,png,JPG,JPEG,PNG,WEBP}",
+    { eager: true, query: "?url", import: "default" }
+  );
+  const portraitModules = import.meta.glob(
+    "/hero-rotation/portrait/*.{webp,jpg,jpeg,png,JPG,JPEG,PNG,WEBP}",
+    { eager: true, query: "?url", import: "default" }
+  );
+  const shuffle = (arr) => {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
+  const landscapeImages = shuffle(Object.values(landscapeModules));
+  const portraitImages = shuffle(Object.values(portraitModules));
+
+  // Pick the right set for the current viewport.
+  // Fall back to the other set if the matching one is empty.
+  const pickSet = () => {
+    const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+    if (isPortrait && portraitImages.length > 0) return portraitImages;
+    if (!isPortrait && landscapeImages.length > 0) return landscapeImages;
+    return landscapeImages.length > 0 ? landscapeImages : portraitImages;
+  };
+
+  let heroImages = pickSet();
   let currentImageIndex = 0;
   let scrollTriggerInstance = null;
 
+  // Set the initial hero image
+  if (heroImages.length > 0) heroImg.src = heroImages[0];
+
+  // Swap the set when orientation changes (phone rotated, window resized across breakpoint)
+  window.matchMedia("(orientation: portrait)").addEventListener("change", () => {
+    heroImages = pickSet();
+    currentImageIndex = 0;
+    if (heroImages.length > 0) heroImg.src = heroImages[0];
+  });
+
   setInterval(() => {
+    if (heroImages.length === 0) return;
     currentImageIndex = (currentImageIndex + 1) % heroImages.length;
-    heroImg.src = `${import.meta.env.BASE_URL}images/hero/${heroImages[currentImageIndex]}`;
+    heroImg.src = heroImages[currentImageIndex];
   }, 2500);
 
   const initAnimations = () => {

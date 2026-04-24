@@ -194,8 +194,9 @@
 }
 
 .services .service-card-note {
-  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
-  opacity: 0.8;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  color: #fff;
+  opacity: 0.9;
   margin-top: -1em;
 }
 
@@ -242,4 +243,10 @@
     object-fit: contain;
     display: block;
   }
+
+  /* Shorter hero frame on mobile so landscape shots crop less aggressively */
+  .hero-img-holder {
+    height: 75svh;
+  }
+
 }
